@@ -10,4 +10,10 @@ public class UserService {
         this.repo = repo;
     }
 
+    public void registerUser(User user){
+        if (repo.exsistByUsername(user.getName())){
+            throw new IllegalStateException("user already exists");
+        }
+        repo.save(user);
+    }
 }
