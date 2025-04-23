@@ -11,7 +11,7 @@ public class UserService {
     }
 
     public void registerUser(User user){
-        if (repo.exsistByUsername(user.getName())){
+        if (repo.existsByName(user.getName())){
             throw new IllegalStateException("user already exists");
         }
         repo.save(user);

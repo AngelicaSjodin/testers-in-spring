@@ -1,5 +1,6 @@
 package com.example.testers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +18,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    private String registerUser(@RequestBody User user){
+    public ResponseEntity<String> registerUser(@RequestBody User user){
         userService.registerUser(user);
-        return "user registered";
+        return ResponseEntity.ok("user registered");
     }
 
 }

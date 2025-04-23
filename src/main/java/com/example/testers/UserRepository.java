@@ -1,8 +1,10 @@
 package com.example.testers;
 
-public interface UserRepository {
-    boolean exsistByUsername(String username);
-    void save (User user);
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    User findByUsername(String username);
+public interface UserRepository extends JpaRepository<User,Long> {
+
+    boolean existsByName(String name);
+
+    User findByName(String name);
 }
