@@ -1,10 +1,7 @@
 package com.example.testers;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -21,6 +18,11 @@ public class UserController {
     public ResponseEntity<String> registerUser(@RequestBody User user){
         userService.registerUser(user);
         return ResponseEntity.ok("user registered");
+    }
+
+    @GetMapping("/{username}")
+    public User getUser(@PathVariable String username){
+        return userService.getUserByUsername(username);
     }
 
 }
