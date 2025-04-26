@@ -1,6 +1,8 @@
 package com.example.testers;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 
@@ -16,6 +18,13 @@ import org.junit.jupiter.api.BeforeEach;
         mockedRepo = mock(UserRepository.class);
         userService = new UserService(mockedRepo);
         userController = new UserController(userService);
+    }
+
+    @AfterEach
+    public void tearDown(){
+        mockedRepo = null;
+        userService = null;
+        userController = null;
     }
 
 }
