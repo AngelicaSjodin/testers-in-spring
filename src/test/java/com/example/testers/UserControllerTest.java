@@ -1,12 +1,15 @@
 package com.example.testers;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 
-    class UserControllerTest {
+
+
+    public class UserControllerTest {
 
     private UserRepository mockedRepo;
     private UserService userService;
@@ -27,4 +30,32 @@ import org.junit.jupiter.api.BeforeEach;
         userController = null;
     }
 
+    @Test
+    public void registerShouldReturnString(){
+        //Arrange is the setUp
+
+        //hard-coding in a user
+        User user = new User("Bill","bill@yahoo.com", 1L);
+        when(mockedRepo.existsByUsername("Bill")).thenReturn(false);
+        //Act
+        String response = userController.registerUser(user).getBody();
+
+        //Assert
+        assertEquals("user registered", response);
+        verify(mockedRepo).save(any(User.class));
+    }
+
+    @Test
+    public void getShouldReturnUser(){
+        //Arrange is setUp
+
+        //hard-coded in user
+        User user = new User("Bill","bill@yahoo.com",2L);
+        when(mockedRepo.findByUsername("Bill")).thenReturn(user);
+        //Act
+        User result = userController.getUser("Bill");
+        //Assert
+        assertEquals("Bill",result.getName());
+        assertEquals("bill@yahoo.com",result.getEmail());
+    }
 }
