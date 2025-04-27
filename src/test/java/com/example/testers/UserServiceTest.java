@@ -26,7 +26,7 @@ public class UserServiceTest {
         User user = new User("Angelica","Angelica@test.com",null);
 
             //makes user  angelica already exist by telling mock to return true when mwthod is called
-        when(mockRepo.existsByUsername("Angelica")).thenReturn(true);
+        when(mockRepo.existsByName("Angelica")).thenReturn(true);
 
         //Act & Assert
 
@@ -52,11 +52,11 @@ public class UserServiceTest {
         UserService service = new UserService(mockRepo);
 
             //no user is found when there is "missingUser"
-        when(mockRepo.findByUsername("missingUser")).thenReturn(null);
+        when(mockRepo.findByName("missingUser")).thenReturn(null);
 
         //Act
             //calling service method
-        User result = service.getUserByUsername("missingUser");
+        User result = service.getUserByName("missingUser");
 
         //Assert
             //when repo return null so does servicee

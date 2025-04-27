@@ -11,13 +11,13 @@ public class UserService {
     }
 
     public void registerUser(User user){
-        if (repo.existsByUsername(user.getName())){
+        if (repo.existsByName(user.getName())){
             throw new IllegalStateException("user already exists");
         }
         repo.save(user);
     }
 
-    public User getUserByUsername(String username){
-        return repo.findByUsername(username);
+    public User getUserByName(String name){
+        return repo.findByName(name);
     }
 }

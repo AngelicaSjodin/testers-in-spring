@@ -36,7 +36,7 @@ import org.junit.jupiter.api.BeforeEach;
 
         //hard-coding in a user
         User user = new User("Bill","bill@yahoo.com", 1L);
-        when(mockedRepo.existsByUsername("Bill")).thenReturn(false);
+        when(mockedRepo.existsByName("Bill")).thenReturn(false);
         //Act
         String response = userController.registerUser(user).getBody();
 
@@ -51,7 +51,7 @@ import org.junit.jupiter.api.BeforeEach;
 
         //hard-coded in user
         User user = new User("Bill","bill@yahoo.com",2L);
-        when(mockedRepo.findByUsername("Bill")).thenReturn(user);
+        when(mockedRepo.findByName("Bill")).thenReturn(user);
         //Act
         User result = userController.getUser("Bill");
         //Assert
