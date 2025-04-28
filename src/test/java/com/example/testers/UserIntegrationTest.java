@@ -26,24 +26,27 @@ public class UserIntegrationTest {
     @Autowired
     private UserRepository userRepository;
 
+    //removes data
     @BeforeEach
     public void cleanDatabase() {
         userRepository.deleteAll();
     }
 
+    //integration test
+    //tests whole controller chain, controller to service to repository to database
     @Test
     public void testRegisterAndRetrieverUser()throws Exception{
         User user = new User("Ange","ange@yahoo.com",null);
 
 
-        //register User
+        //register User, checks it saves correctly
         mockMvc.perform(post("/users/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(user)))
                 .andExpect(status().isOk())
                 .andExpect(content().string("user registered"));
 
-        // Retrieve user
+        // Retrieve user, checks it retrieves correct data from teh database
         mockMvc.perform(get("/users/Ange"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Ange"))

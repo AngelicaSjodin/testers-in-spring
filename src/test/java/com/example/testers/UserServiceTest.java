@@ -10,9 +10,9 @@ public class UserServiceTest {
 
     //two unit test with mockito
 
+    //Unit test
+    //checks registerUser() throws an error exception id the name is already taken
     @Test
-    //checks registerUser() throws an exception and does not save a user if the
-    //username is already taken
     public void ChecksIfRegisterUserMethodStopsIfTheUsernameIsAlreadyTaken(){
         //Arrange
 
@@ -41,8 +41,9 @@ public class UserServiceTest {
 
     }
 
+    //unit test
+    //checks getUserByName() returns null if the user is not found
     @Test
-    //checks what happens if a username is not found, in that case it should return null
     public void ChecksIfGetUserByUsernameMethodStopsIfTheUsernameIsMissing(){
         //Arrange
 

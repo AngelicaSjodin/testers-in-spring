@@ -30,6 +30,8 @@ import org.junit.jupiter.api.BeforeEach;
         userController = null;
     }
 
+    //component test
+    // checks that the controller returns the correct response when a user is registered
     @Test
     public void registerShouldReturnString(){
         //Arrange is the setUp
@@ -45,6 +47,8 @@ import org.junit.jupiter.api.BeforeEach;
         verify(mockedRepo).save(any(User.class));
     }
 
+    //component test
+    // checks that the copntroller returns a user with the correct name and email
     @Test
     public void getShouldReturnUser(){
         //Arrange is setUp
