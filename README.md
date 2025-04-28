@@ -5,6 +5,7 @@ Unit test, Component test and Integration test
 Unit test, tests individual methods in isolation with mockito.
 Component test, tests the interaction between the controller and service.
 Integration test, tests the whole system is working together. 
+
 2. Methods tested
 
 the unit test of UserService.registerUser() checks thatno duplicate names are allowed, it was made to help users (in the future) easily find eachother
